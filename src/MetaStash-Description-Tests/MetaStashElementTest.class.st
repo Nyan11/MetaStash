@@ -38,6 +38,15 @@ MetaStashElementTest >> testAsMetaStashElement [
 ]
 
 { #category : 'tests' }
+MetaStashElementTest >> testAsMetaStashModel [
+
+	| model |
+	model := self objectToTest asMetaStashModel.
+	self assert: model elements size equals: 2.
+	self assert: model relations size equals: 3
+]
+
+{ #category : 'tests' }
 MetaStashElementTest >> testIncludeGetter [
 
 	| element |

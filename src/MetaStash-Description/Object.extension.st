@@ -7,6 +7,12 @@ Object >> asMetaStashElement [
 ]
 
 { #category : '*MetaStash-Description' }
+Object >> asMetaStashModel [
+
+	^ self asMetaStashElement asMetaStashModel
+]
+
+{ #category : '*MetaStash-Description' }
 Object >> metaStashAccessors [
 
 	| pragmas |
@@ -17,4 +23,10 @@ Object >> metaStashAccessors [
 			  withArguments: #(  )
 			  executeMethod: p method ]
 
+]
+
+{ #category : '*MetaStash-Description' }
+Object >> metaStashEqual: anObject [ 
+
+	^ self = anObject
 ]

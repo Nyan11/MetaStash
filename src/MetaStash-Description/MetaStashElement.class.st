@@ -10,16 +10,9 @@ Class {
 }
 
 { #category : 'instance creation' }
-MetaStashElement class >> new [
-
-	self error: 'MetaStashElement must only be created with newForObject:'
-]
-
-{ #category : 'instance creation' }
 MetaStashElement class >> newForObject: anObject [
 
-	^ self basicNew
-		  initialize;
+	^ self new
 		  object: anObject;
 		  accessors: anObject metaStashAccessors;
 		  yourself
@@ -41,6 +34,12 @@ MetaStashElement >> accessors [
 MetaStashElement >> accessors: anObject [
 
 	accessors := anObject
+]
+
+{ #category : 'converting' }
+MetaStashElement >> asMetaStashModel [
+
+	^ MetaStashModel newForRootElement: self
 ]
 
 { #category : 'as yet unclassified' }

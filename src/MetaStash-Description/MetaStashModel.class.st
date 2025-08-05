@@ -11,19 +11,11 @@ Class {
 }
 
 { #category : 'instance creation' }
-MetaStashModel class >> new [
-
-	self error:
-		'MetaStashModel must only be created with newForRootElement:'
-]
-
-{ #category : 'instance creation' }
 MetaStashModel class >> newForRootElement: aMetaStashRootElement [
 
 	| visitor |
 	visitor := MetaStashModelBuilder new.
 	aMetaStashRootElement acceptMetaStashVisitor: visitor.
-	visitor visit: aMetaStashRootElement.
 	^ visitor model
 ]
 
@@ -43,6 +35,13 @@ MetaStashModel >> elements [
 MetaStashModel >> elements: anObject [
 
 	elements := anObject
+]
+
+{ #category : 'initialization' }
+MetaStashModel >> initialize [
+
+	elements := OrderedCollection new.
+	relations := OrderedCollection new.
 ]
 
 { #category : 'accessing' }

@@ -42,6 +42,12 @@ MetaStashAccessor >> get: anObject [
 	get := anObject
 ]
 
+{ #category : 'as yet unclassified' }
+MetaStashAccessor >> getValueWithElement: aMetaStashElement [
+
+	^ (aMetaStashElement object perform: self get) asMetaStashElement
+]
+
 { #category : 'accessing' }
 MetaStashAccessor >> set [
 

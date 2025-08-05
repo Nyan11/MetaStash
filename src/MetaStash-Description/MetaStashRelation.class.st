@@ -10,6 +10,16 @@ Class {
 	#package : 'MetaStash-Description'
 }
 
+{ #category : 'instance creation' }
+MetaStashRelation class >> fromElement: aMetaStashElementFrom withAccessor: aMetaStashAccessor [
+
+	| relation metaStashElementTo |
+	relation := self new from: aMetaStashElementFrom; accessor: aMetaStashAccessor; yourself.
+	metaStashElementTo := aMetaStashAccessor getValueWithElement: aMetaStashElementFrom.
+	relation to: metaStashElementTo.
+	^ relation
+]
+
 { #category : 'visiting' }
 MetaStashRelation >> acceptMetaStashVisitor: aMetaStashVisitor [
 

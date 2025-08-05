@@ -13,21 +13,25 @@ Class {
 { #category : 'as yet unclassified' }
 MetaStashMockObject >> stashRelation1 [
 
-	^ MetaStashRelation new get: #testSlot1; set: #testSlot1:; yourself
+	<msAccessor>
+	^ MetaStashAccessor new
+		  get: #testSlot1;
+		  set: #testSlot1:;
+		  yourself
 ]
 
 { #category : 'as yet unclassified' }
 MetaStashMockObject >> stashRelation2 [
 
-	^ MetaStashRelation
-		  get: #testSlot2 
-		  set: #testSlot2:
+	<msAccessor>
+	^ MetaStashAccessor get: #testSlot2 set: #testSlot2:
 ]
 
 { #category : 'as yet unclassified' }
 MetaStashMockObject >> stashRelation3 [
 
-	^ MetaStashRelation accessor: #testSlot3
+	<msAccessor>
+	^ MetaStashAccessor accessor: #testSlot3
 ]
 
 { #category : 'accessing' }

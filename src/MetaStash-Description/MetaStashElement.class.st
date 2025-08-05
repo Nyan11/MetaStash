@@ -3,7 +3,7 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'object',
-		'relations'
+		'accessors'
 	],
 	#category : 'MetaStash-Description',
 	#package : 'MetaStash-Description'
@@ -21,8 +21,38 @@ MetaStashElement class >> newForObject: anObject [
 	^ self basicNew
 		  initialize;
 		  object: anObject;
-		  relations: anObject stashRelations;
+		  accessors: anObject metaStashAccessors;
 		  yourself
+]
+
+{ #category : 'visiting' }
+MetaStashElement >> acceptMetaStashVisitor: aMetaStashVisitor [
+
+	aMetaStashVisitor visitMetaStashElement: self.
+]
+
+{ #category : 'accessing' }
+MetaStashElement >> accessors [
+
+	^ accessors
+]
+
+{ #category : 'accessing' }
+MetaStashElement >> accessors: anObject [
+
+	accessors := anObject
+]
+
+{ #category : 'as yet unclassified' }
+MetaStashElement >> includeGetter: aSymbol [
+
+	^ self accessors anySatisfy: [ :accessor | accessor get = aSymbol ]
+]
+
+{ #category : 'as yet unclassified' }
+MetaStashElement >> includeSetter: aSymbol [
+
+	^ self accessors anySatisfy: [ :accessor | accessor set = aSymbol ]
 ]
 
 { #category : 'accessing' }
@@ -35,16 +65,4 @@ MetaStashElement >> object [
 MetaStashElement >> object: anObject [
 
 	object := anObject
-]
-
-{ #category : 'accessing' }
-MetaStashElement >> relations [
-
-	^ relations
-]
-
-{ #category : 'accessing' }
-MetaStashElement >> relations: anObject [
-
-	relations := anObject
 ]

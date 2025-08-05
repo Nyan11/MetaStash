@@ -2,48 +2,52 @@ Class {
 	#name : 'MetaStashRelation',
 	#superclass : 'Object',
 	#instVars : [
-		'set',
-		'get'
+		'from',
+		'to',
+		'accessor'
 	],
 	#category : 'MetaStash-Description',
 	#package : 'MetaStash-Description'
 }
 
-{ #category : 'as yet unclassified' }
-MetaStashRelation class >> accessor: anAccessor [
+{ #category : 'visiting' }
+MetaStashRelation >> acceptMetaStashVisitor: aMetaStashVisitor [
 
-	^ self get: anAccessor asMetaStashGetter set: anAccessor asMetaStashSetter
-]
-
-{ #category : 'as yet unclassified' }
-MetaStashRelation class >> get: aGetter set: aSetter [
-
-	^ self new
-		  get: aGetter;
-		  set: aSetter;
-		  yourself
+	aMetaStashVisitor visitMetaStashRelation: self
 ]
 
 { #category : 'accessing' }
-MetaStashRelation >> get [
+MetaStashRelation >> accessor [
 
-	^ get
+	^ accessor
 ]
 
 { #category : 'accessing' }
-MetaStashRelation >> get: anObject [
+MetaStashRelation >> accessor: anObject [
 
-	get := anObject
+	accessor := anObject
 ]
 
 { #category : 'accessing' }
-MetaStashRelation >> set [
+MetaStashRelation >> from [
 
-	^ set
+	^ from
 ]
 
 { #category : 'accessing' }
-MetaStashRelation >> set: anObject [
+MetaStashRelation >> from: anObject [
 
-	set := anObject
+	from := anObject
+]
+
+{ #category : 'accessing' }
+MetaStashRelation >> to [
+
+	^ to
+]
+
+{ #category : 'accessing' }
+MetaStashRelation >> to: anObject [
+
+	to := anObject
 ]

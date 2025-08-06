@@ -1,5 +1,5 @@
 Class {
-	#name : 'MetaStashModel',
+	#name : 'MetaStashDescriptionModel',
 	#superclass : 'Object',
 	#instVars : [
 		'rootElement',
@@ -11,59 +11,65 @@ Class {
 }
 
 { #category : 'instance creation' }
-MetaStashModel class >> newForRootElement: aMetaStashRootElement [
+MetaStashDescriptionModel class >> newForRootElement: aMetaStashRootElement [
 
 	| visitor |
-	visitor := MetaStashModelBuilder new.
+	visitor := MetaStashDescriptionModelBuilder new.
 	aMetaStashRootElement acceptMetaStashVisitor: visitor.
 	^ visitor model
 ]
 
 { #category : 'visiting' }
-MetaStashModel >> acceptMetaStashVisitor: aMetaStashVisitor [
+MetaStashDescriptionModel >> acceptMetaStashVisitor: aMetaStashVisitor [
 
 	aMetaStashVisitor visitMetaStashModel: self
 ]
 
 { #category : 'accessing' }
-MetaStashModel >> elements [
+MetaStashDescriptionModel >> elements [
 
 	^ elements
 ]
 
 { #category : 'accessing' }
-MetaStashModel >> elements: anObject [
+MetaStashDescriptionModel >> elements: anObject [
 
 	elements := anObject
 ]
 
 { #category : 'initialization' }
-MetaStashModel >> initialize [
+MetaStashDescriptionModel >> initialize [
 
 	elements := OrderedCollection new.
 	relations := OrderedCollection new.
 ]
 
 { #category : 'accessing' }
-MetaStashModel >> relations [
+MetaStashDescriptionModel >> modelSymbol [
+
+	^ self rootElement modelSymbol
+]
+
+{ #category : 'accessing' }
+MetaStashDescriptionModel >> relations [
 
 	^ relations
 ]
 
 { #category : 'accessing' }
-MetaStashModel >> relations: anObject [
+MetaStashDescriptionModel >> relations: anObject [
 
 	relations := anObject
 ]
 
 { #category : 'accessing' }
-MetaStashModel >> rootElement [
+MetaStashDescriptionModel >> rootElement [
 
 	^ rootElement
 ]
 
 { #category : 'accessing' }
-MetaStashModel >> rootElement: anObject [
+MetaStashDescriptionModel >> rootElement: anObject [
 
 	rootElement := anObject
 ]

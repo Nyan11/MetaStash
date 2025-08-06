@@ -9,7 +9,7 @@ Class {
 MetaStashAccessorTest >> testAccessor [
 
 	| accessor |
-	accessor := MetaStashAccessor accessor: #test.
+	accessor := MetaStashDescriptionAccessor accessor: #test.
 	self assert: accessor get equals: #test.
 	self assert: accessor set equals: #test:
 ]
@@ -18,7 +18,7 @@ MetaStashAccessorTest >> testAccessor [
 MetaStashAccessorTest >> testGetSet [
 
 	| accessor |
-	accessor := MetaStashAccessor get: #getter set: #setter:.
+	accessor := MetaStashDescriptionAccessor get: #getter set: #setter:.
 	self assert: accessor get equals: #getter.
 	self assert: accessor set equals: #setter:
 ]
@@ -38,7 +38,7 @@ MetaStashAccessorTest >> testGetValueWithElement [
 		              (#testSlot3 -> #c) }.
 	testValues do: [ :asso |
 		| accessor |
-		accessor := MetaStashAccessor accessor: asso key.
+		accessor := MetaStashDescriptionAccessor accessor: asso key.
 		self
 			assert: (accessor getValueWithElement: element) object
 			equals: asso value ]

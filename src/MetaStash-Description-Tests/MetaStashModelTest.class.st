@@ -83,7 +83,7 @@ MetaStashModelTest >> testGraphModel [
 MetaStashModelTest >> testNewForRootElement [
 
 	| model |
-	model := MetaStashModel newForRootElement:
+	model := MetaStashDescriptionModel newForRootElement:
 		         (self simpleModel asMetaStashElementForModel: #Testing).
 	self assert: model elements size equals: 2.
 	self assert: model relations size equals: 3

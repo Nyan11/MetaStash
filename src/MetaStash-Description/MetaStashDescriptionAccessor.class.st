@@ -1,5 +1,5 @@
 Class {
-	#name : 'MetaStashAccessor',
+	#name : 'MetaStashDescriptionAccessor',
 	#superclass : 'Object',
 	#instVars : [
 		'set',
@@ -10,13 +10,13 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
-MetaStashAccessor class >> accessor: anAccessor [
+MetaStashDescriptionAccessor class >> accessor: anAccessor [
 
 	^ self get: anAccessor asMetaStashGetter set: anAccessor asMetaStashSetter
 ]
 
 { #category : 'as yet unclassified' }
-MetaStashAccessor class >> get: aGetter set: aSetter [
+MetaStashDescriptionAccessor class >> get: aGetter set: aSetter [
 
 	^ self new
 		  get: aGetter;
@@ -25,38 +25,38 @@ MetaStashAccessor class >> get: aGetter set: aSetter [
 ]
 
 { #category : 'visiting' }
-MetaStashAccessor >> acceptMetaStashVisitor: aMetaStashVisitor [
+MetaStashDescriptionAccessor >> acceptMetaStashVisitor: aMetaStashVisitor [
 
 	aMetaStashVisitor visitMetaStashAccessor: self
 ]
 
 { #category : 'accessing' }
-MetaStashAccessor >> get [
+MetaStashDescriptionAccessor >> get [
 
 	^ get
 ]
 
 { #category : 'accessing' }
-MetaStashAccessor >> get: anObject [
+MetaStashDescriptionAccessor >> get: anObject [
 
 	get := anObject
 ]
 
 { #category : 'as yet unclassified' }
-MetaStashAccessor >> getValueWithElement: aMetaStashElement [
+MetaStashDescriptionAccessor >> getValueWithElement: aMetaStashElement [
 
 	^ (aMetaStashElement object perform: self get)
 		  asMetaStashElementForModel: aMetaStashElement modelSymbol
 ]
 
 { #category : 'accessing' }
-MetaStashAccessor >> set [
+MetaStashDescriptionAccessor >> set [
 
 	^ set
 ]
 
 { #category : 'accessing' }
-MetaStashAccessor >> set: anObject [
+MetaStashDescriptionAccessor >> set: anObject [
 
 	set := anObject
 ]

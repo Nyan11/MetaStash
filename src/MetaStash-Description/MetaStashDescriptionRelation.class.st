@@ -1,5 +1,5 @@
 Class {
-	#name : 'MetaStashRelation',
+	#name : 'MetaStashDescriptionRelation',
 	#superclass : 'Object',
 	#instVars : [
 		'from',
@@ -11,43 +11,43 @@ Class {
 }
 
 { #category : 'visiting' }
-MetaStashRelation >> acceptMetaStashVisitor: aMetaStashVisitor [
+MetaStashDescriptionRelation >> acceptMetaStashVisitor: aMetaStashVisitor [
 
 	aMetaStashVisitor visitMetaStashRelation: self
 ]
 
 { #category : 'accessing' }
-MetaStashRelation >> accessor [
+MetaStashDescriptionRelation >> accessor [
 
 	^ accessor
 ]
 
 { #category : 'accessing' }
-MetaStashRelation >> accessor: anObject [
+MetaStashDescriptionRelation >> accessor: anObject [
 
 	accessor := anObject
 ]
 
 { #category : 'accessing' }
-MetaStashRelation >> from [
+MetaStashDescriptionRelation >> from [
 
 	^ from
 ]
 
 { #category : 'accessing' }
-MetaStashRelation >> from: anObject [
+MetaStashDescriptionRelation >> from: anObject [
 
 	from := anObject
 ]
 
 { #category : 'accessing' }
-MetaStashRelation >> to [
+MetaStashDescriptionRelation >> to [
 
 	^ to
 ]
 
 { #category : 'accessing' }
-MetaStashRelation >> to: anObject [
+MetaStashDescriptionRelation >> to: anObject [
 
 	to := anObject
 ]

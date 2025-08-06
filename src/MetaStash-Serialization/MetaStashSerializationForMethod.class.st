@@ -73,7 +73,7 @@ MetaStashSerializationForMethod >> returnReceiver [
 MetaStashSerializationForMethod >> returnReceiver: anObject [
 
 	returnReceiver := anObject.
-	self receivers add: anObject
+	(self receivers includes: anObject) ifFalse: [ self receivers add: anObject ]
 ]
 
 { #category : 'as yet unclassified' }

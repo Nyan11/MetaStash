@@ -50,7 +50,7 @@ MetaStashElementTest >> testAsMetaStashModel [
 MetaStashElementTest >> testIncludeGetter [
 
 	| element |
-	element := MetaStashElement newForObject: self objectToTest forModel: #Testing.
+	element := MetaStashDescriptionElement newForObject: self objectToTest forModel: #Testing.
 	self assert: (element includeGetter: #testSlot1).
 	self assert: (element includeGetter: #testSlot2).
 	self assert: (element includeGetter: #testSlot3).
@@ -61,7 +61,7 @@ MetaStashElementTest >> testIncludeGetter [
 MetaStashElementTest >> testIncludeSetter [
 
 	| element |
-	element := MetaStashElement newForObject: self objectToTest forModel: #Testing.
+	element := MetaStashDescriptionElement newForObject: self objectToTest forModel: #Testing.
 	self assert: (element includeSetter: #testSlot1:).
 	self assert: (element includeSetter: #testSlot2:).
 	self assert: (element includeSetter: #testSlot3:).
@@ -72,7 +72,7 @@ MetaStashElementTest >> testIncludeSetter [
 MetaStashElementTest >> testNewForObjectForModel [
 
 	| element |
-	element := MetaStashElement
+	element := MetaStashDescriptionElement
 		           newForObject: self objectToTest
 		           forModel: #Testing.
 	self assert: element object equals: self objectToTest.

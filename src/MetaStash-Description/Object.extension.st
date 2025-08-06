@@ -3,7 +3,7 @@ Extension { #name : 'Object' }
 { #category : '*MetaStash-Description' }
 Object >> asMetaStashElementForModel: aSymbol [ 
 
-	^ MetaStashElement newForObject: self forModel: aSymbol
+	^ MetaStashDescriptionElement newForObject: self forModel: aSymbol
 ]
 
 { #category : '*MetaStash-Description' }
@@ -30,4 +30,17 @@ Object >> metaStashAccessorsForModel: aSymbol [
 Object >> metaStashEqual: anObject [ 
 
 	^ self = anObject
+]
+
+{ #category : '*MetaStash-Description' }
+Object >> metaStashSerializationConstructor [
+
+	self isClass ifTrue: [ ^ self printString ].
+	^ (self className , ' new') asMetaStashConstructor
+]
+
+{ #category : '*MetaStash-Description' }
+Object >> metaStashSerializationVariableName [
+
+	^ (self className uncapitalized copyReplaceAll: ' ' with: '') ifEmpty: [ 'obj' ]
 ]

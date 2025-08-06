@@ -1,6 +1,6 @@
 Class {
-	#name : 'MetaStashModelBuilder',
-	#superclass : 'MetaStashVisitor',
+	#name : 'MetaStashDescriptionModelBuilder',
+	#superclass : 'MetaStashDescriptionVisitor',
 	#instVars : [
 		'model',
 		'hasRootElement',
@@ -11,12 +11,12 @@ Class {
 }
 
 { #category : 'testing' }
-MetaStashModelBuilder >> addElementToModel: aMetaStashElement [
+MetaStashDescriptionModelBuilder >> addElementToModel: aMetaStashElement [
 
 	self model elements add: aMetaStashElement.
 	aMetaStashElement accessors do: [ :accessor |
 		| relation |
-		relation := MetaStashRelation new
+		relation := MetaStashDescriptionRelation new
 			            from: aMetaStashElement;
 			            accessor: accessor;
 			            to: (accessor getValueWithElement: aMetaStashElement).
@@ -24,57 +24,57 @@ MetaStashModelBuilder >> addElementToModel: aMetaStashElement [
 ]
 
 { #category : 'accessing' }
-MetaStashModelBuilder >> hasRootElement [
+MetaStashDescriptionModelBuilder >> hasRootElement [
 
 	^ hasRootElement
 ]
 
 { #category : 'accessing' }
-MetaStashModelBuilder >> hasRootElement: anObject [
+MetaStashDescriptionModelBuilder >> hasRootElement: anObject [
 
 	hasRootElement := anObject
 ]
 
 { #category : 'initialization' }
-MetaStashModelBuilder >> initialize [
+MetaStashDescriptionModelBuilder >> initialize [
 
-	model := MetaStashModel new.
+	model := MetaStashDescriptionModel new.
 	hasRootElement := false
 ]
 
 { #category : 'testing' }
-MetaStashModelBuilder >> isElementInModel: aMetaStashElement [
+MetaStashDescriptionModelBuilder >> isElementInModel: aMetaStashElement [
 
 	^ self model elements anySatisfy: [ :element |
 		  element object metaStashEqual: aMetaStashElement object ]
 ]
 
 { #category : 'accessing' }
-MetaStashModelBuilder >> model [
+MetaStashDescriptionModelBuilder >> model [
 
 	^ model
 ]
 
 { #category : 'accessing' }
-MetaStashModelBuilder >> model: anObject [
+MetaStashDescriptionModelBuilder >> model: anObject [
 
 	model := anObject
 ]
 
 { #category : 'testing' }
-MetaStashModelBuilder >> modelSymbol [
+MetaStashDescriptionModelBuilder >> modelSymbol [
 
 	^ modelSymbol
 ]
 
 { #category : 'testing' }
-MetaStashModelBuilder >> modelSymbol: aSymbol [
+MetaStashDescriptionModelBuilder >> modelSymbol: aSymbol [
 
 	modelSymbol := aSymbol
 ]
 
 { #category : 'visiting' }
-MetaStashModelBuilder >> visitMetaStashElement: aMetaStashElement [
+MetaStashDescriptionModelBuilder >> visitMetaStashElement: aMetaStashElement [
 
 	self hasRootElement ifFalse: [
 		self model rootElement: aMetaStashElement.
@@ -84,7 +84,7 @@ MetaStashModelBuilder >> visitMetaStashElement: aMetaStashElement [
 ]
 
 { #category : 'visiting' }
-MetaStashModelBuilder >> visitMetaStashRelation: aMetaStashRelation [
+MetaStashDescriptionModelBuilder >> visitMetaStashRelation: aMetaStashRelation [
 
 	self model relations add: aMetaStashRelation.
 	aMetaStashRelation to acceptMetaStashVisitor: self

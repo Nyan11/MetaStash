@@ -14,7 +14,7 @@ Class {
 MetaStashMockObject >> metaStash1 [
 
 	<MetaStash: #Testing>
-	^ MetaStashAccessor new
+	^ MetaStashDescriptionAccessor new
 		  get: #testSlot1;
 		  set: #testSlot1:;
 		  yourself
@@ -24,14 +24,14 @@ MetaStashMockObject >> metaStash1 [
 MetaStashMockObject >> metaStash2 [
 
 	<MetaStash: #Testing>
-	^ MetaStashAccessor get: #testSlot2 set: #testSlot2:
+	^ MetaStashDescriptionAccessor get: #testSlot2 set: #testSlot2:
 ]
 
 { #category : 'as yet unclassified' }
 MetaStashMockObject >> metaStash3 [
 
 	<MetaStash: #Testing>
-	^ MetaStashAccessor accessor: #testSlot3
+	^ MetaStashDescriptionAccessor accessor: #testSlot3
 ]
 
 { #category : 'accessing' }

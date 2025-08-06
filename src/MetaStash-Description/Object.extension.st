@@ -1,28 +1,29 @@
 Extension { #name : 'Object' }
 
 { #category : '*MetaStash-Description' }
-Object >> asMetaStashElement [
+Object >> asMetaStashElementForModel: aSymbol [ 
 
-	^ MetaStashElement newForObject: self
+	^ MetaStashElement newForObject: self forModel: aSymbol
 ]
 
 { #category : '*MetaStash-Description' }
-Object >> asMetaStashModel [
+Object >> asMetaStashModel: aSymbol [
 
-	^ self asMetaStashElement asMetaStashModel
+	^ (self asMetaStashElementForModel: aSymbol) asMetaStashModel
 ]
 
 { #category : '*MetaStash-Description' }
-Object >> metaStashAccessors [
+Object >> metaStashAccessorsForModel: aSymbol [
 
 	| pragmas |
-	pragmas := Pragma allNamed: #msAccessor from: self class to: Object.
-	^ pragmas collect: [ :p |
-		  p method
-			  receiver: self
-			  withArguments: #(  )
-			  executeMethod: p method ]
-
+	pragmas := Pragma allNamed: #MetaStash: from: self class to: Object.
+	^ pragmas
+		  select: [ :p | p arguments first = aSymbol ]
+		  thenCollect: [ :p |
+			  p method
+				  receiver: self
+				  withArguments: #(  )
+				  executeMethod: p method ]
 ]
 
 { #category : '*MetaStash-Description' }

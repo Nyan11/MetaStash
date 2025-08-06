@@ -2,6 +2,7 @@ Class {
 	#name : 'MetaStashElement',
 	#superclass : 'Object',
 	#instVars : [
+		'modelSymbol',
 		'object',
 		'accessors'
 	],
@@ -10,11 +11,12 @@ Class {
 }
 
 { #category : 'instance creation' }
-MetaStashElement class >> newForObject: anObject [
+MetaStashElement class >> newForObject: anObject forModel: aSymbol [
 
 	^ self new
+		  modelSymbol: aSymbol;
 		  object: anObject;
-		  accessors: anObject metaStashAccessors;
+		  accessors: (anObject metaStashAccessorsForModel: aSymbol);
 		  yourself
 ]
 
@@ -52,6 +54,18 @@ MetaStashElement >> includeGetter: aSymbol [
 MetaStashElement >> includeSetter: aSymbol [
 
 	^ self accessors anySatisfy: [ :accessor | accessor set = aSymbol ]
+]
+
+{ #category : 'accessing' }
+MetaStashElement >> modelSymbol [
+
+	^ modelSymbol
+]
+
+{ #category : 'accessing' }
+MetaStashElement >> modelSymbol: anObject [
+
+	modelSymbol := anObject
 ]
 
 { #category : 'accessing' }

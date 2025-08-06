@@ -74,7 +74,7 @@ MetaStashModelTest >> simpleModel [
 MetaStashModelTest >> testGraphModel [
 
 	| model |
-	model := self graphModel asMetaStashModel.
+	model := self graphModel asMetaStashModel: #Testing.
 	self assert: model elements size equals: 8.
 	self assert: model relations size equals: 24
 ]
@@ -83,7 +83,8 @@ MetaStashModelTest >> testGraphModel [
 MetaStashModelTest >> testNewForRootElement [
 
 	| model |
-	model := MetaStashModel newForRootElement: self simpleModel asMetaStashElement.
+	model := MetaStashModel newForRootElement:
+		         (self simpleModel asMetaStashElementForModel: #Testing).
 	self assert: model elements size equals: 2.
 	self assert: model relations size equals: 3
 ]
@@ -92,7 +93,7 @@ MetaStashModelTest >> testNewForRootElement [
 MetaStashModelTest >> testSimpleCyclingModel [
 
 	| model |
-	model := self simpleCyclingModel asMetaStashModel.
+	model := self simpleCyclingModel asMetaStashModel: #Testing.
 	self assert: model elements size equals: 1.
 	self assert: model relations size equals: 3
 ]
@@ -101,7 +102,7 @@ MetaStashModelTest >> testSimpleCyclingModel [
 MetaStashModelTest >> testSimpleModel [
 
 	| model |
-	model := self simpleModel asMetaStashModel.
+	model := self simpleModel asMetaStashModel: #Testing.
 	self assert: model elements size equals: 2.
 	self assert: model relations size equals: 3
 ]
@@ -110,7 +111,7 @@ MetaStashModelTest >> testSimpleModel [
 MetaStashModelTest >> testTreeModel [
 
 	| model |
-	model := self treeModel asMetaStashModel.
+	model := self treeModel asMetaStashModel: #Testing.
 	self assert: model elements size equals: 9.
 	self assert: model relations size equals: 24
 ]

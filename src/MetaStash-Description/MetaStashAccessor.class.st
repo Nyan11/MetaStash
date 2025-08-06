@@ -45,7 +45,8 @@ MetaStashAccessor >> get: anObject [
 { #category : 'as yet unclassified' }
 MetaStashAccessor >> getValueWithElement: aMetaStashElement [
 
-	^ (aMetaStashElement object perform: self get) asMetaStashElement
+	^ (aMetaStashElement object perform: self get)
+		  asMetaStashElementForModel: aMetaStashElement modelSymbol
 ]
 
 { #category : 'accessing' }

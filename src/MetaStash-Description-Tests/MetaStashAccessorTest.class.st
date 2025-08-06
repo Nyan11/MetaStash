@@ -31,7 +31,7 @@ MetaStashAccessorTest >> testGetValueWithElement [
 		           testSlot1: #a;
 		           testSlot2: #b;
 		           testSlot3: #c;
-		           asMetaStashElement.
+		           asMetaStashElementForModel: #Testing.
 	testValues := {
 		              (#testSlot1 -> #a).
 		              (#testSlot2 -> #b).

@@ -23,10 +23,10 @@ MetaStashElementTest >> setUp [
 ]
 
 { #category : 'tests' }
-MetaStashElementTest >> testAsMetaStashElement [
+MetaStashElementTest >> testAsMetaStashElementForModel [
 
 	| element |
-	element := self objectToTest asMetaStashElement.
+	element := self objectToTest asMetaStashElementForModel: #Testing.
 	self assert: element object equals: self objectToTest.
 	self assert: element accessors size equals: 3.
 	self assert: (element includeGetter: #testSlot1).
@@ -41,7 +41,7 @@ MetaStashElementTest >> testAsMetaStashElement [
 MetaStashElementTest >> testAsMetaStashModel [
 
 	| model |
-	model := self objectToTest asMetaStashModel.
+	model := self objectToTest asMetaStashModel: #Testing.
 	self assert: model elements size equals: 2.
 	self assert: model relations size equals: 3
 ]
@@ -50,31 +50,31 @@ MetaStashElementTest >> testAsMetaStashModel [
 MetaStashElementTest >> testIncludeGetter [
 
 	| element |
-	element := MetaStashElement newForObject: self objectToTest.
+	element := MetaStashElement newForObject: self objectToTest forModel: #Testing.
 	self assert: (element includeGetter: #testSlot1).
 	self assert: (element includeGetter: #testSlot2).
 	self assert: (element includeGetter: #testSlot3).
 	self deny: (element includeGetter: #notAnAccessor)
-	
 ]
 
 { #category : 'tests' }
 MetaStashElementTest >> testIncludeSetter [
 
 	| element |
-	element := MetaStashElement newForObject: self objectToTest.
+	element := MetaStashElement newForObject: self objectToTest forModel: #Testing.
 	self assert: (element includeSetter: #testSlot1:).
 	self assert: (element includeSetter: #testSlot2:).
 	self assert: (element includeSetter: #testSlot3:).
 	self deny: (element includeSetter: #notAnAccessor:)
-	
 ]
 
 { #category : 'tests' }
-MetaStashElementTest >> testNewForObject [
+MetaStashElementTest >> testNewForObjectForModel [
 
 	| element |
-	element := MetaStashElement newForObject: self objectToTest.
+	element := MetaStashElement
+		           newForObject: self objectToTest
+		           forModel: #Testing.
 	self assert: element object equals: self objectToTest.
 	self assert: element accessors size equals: 3.
 	self assert: (element includeGetter: #testSlot1).

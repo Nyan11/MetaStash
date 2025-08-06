@@ -3,7 +3,8 @@ Class {
 	#superclass : 'MetaStashVisitor',
 	#instVars : [
 		'model',
-		'hasRootElement'
+		'hasRootElement',
+		'modelSymbol'
 	],
 	#category : 'MetaStash-Description',
 	#package : 'MetaStash-Description'
@@ -13,11 +14,12 @@ Class {
 MetaStashModelBuilder >> addElementToModel: aMetaStashElement [
 
 	self model elements add: aMetaStashElement.
-	aMetaStashElement accessors collect: [ :accessor |
+	aMetaStashElement accessors do: [ :accessor |
 		| relation |
-		relation := MetaStashRelation
-			            fromElement: aMetaStashElement
-			            withAccessor: accessor.
+		relation := MetaStashRelation new
+			            from: aMetaStashElement;
+			            accessor: accessor;
+			            to: (accessor getValueWithElement: aMetaStashElement).
 		relation acceptMetaStashVisitor: self ]
 ]
 
@@ -57,6 +59,18 @@ MetaStashModelBuilder >> model [
 MetaStashModelBuilder >> model: anObject [
 
 	model := anObject
+]
+
+{ #category : 'testing' }
+MetaStashModelBuilder >> modelSymbol [
+
+	^ modelSymbol
+]
+
+{ #category : 'testing' }
+MetaStashModelBuilder >> modelSymbol: aSymbol [
+
+	modelSymbol := aSymbol
 ]
 
 { #category : 'visiting' }

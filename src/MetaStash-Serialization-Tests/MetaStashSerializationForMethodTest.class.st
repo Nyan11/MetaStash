@@ -48,6 +48,32 @@ MetaStashSerializationForMethodTest >> simpleMethod [
 ]
 
 { #category : 'tests' }
+MetaStashSerializationForMethodTest >> testArray1 [
+
+	| model sourceCode |
+	model := model := {  } asMetaStashModel: #Description.
+	sourceCode := (model transformTo: #Serialization) asBlockClosureString.
+	self
+		assert: (OpalCompiler new
+				 source: sourceCode;
+				 evaluate) value
+		equals: {  }
+]
+
+{ #category : 'tests' }
+MetaStashSerializationForMethodTest >> testArray2 [
+
+	| model sourceCode |
+	model := model := { Object new } asMetaStashModel: #Description.
+	sourceCode := (model transformTo: #Serialization) asBlockClosureString.
+	self
+		assert: (OpalCompiler new
+				 source: sourceCode;
+				 evaluate) value size
+		equals: 1
+]
+
+{ #category : 'tests' }
 MetaStashSerializationForMethodTest >> testSourceCode1 [
 
 	self assert: self emptyMethod sourceCode equals: 'empty'

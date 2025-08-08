@@ -57,6 +57,25 @@ MetaStashDescriptionElement >> asMetaStashModel [
 	^ MetaStashDescriptionModel newForRootElement: self
 ]
 
+{ #category : 'accessing' }
+MetaStashDescriptionElement >> defaultInstance [
+
+	^ (self serializationConstructor newInstance
+			                 asMetaStashElementForModel: self modelSymbol).
+
+]
+
+{ #category : 'as yet unclassified' }
+MetaStashDescriptionElement >> defaultValueForRelation: aMetaStashDescriptionRelation [
+
+	| currentValue defaultValue |
+	currentValue := aMetaStashDescriptionRelation accessor
+		                getValueWithElement: self.
+	defaultValue := aMetaStashDescriptionRelation accessor
+		                getValueWithElement: self defaultInstance.
+	^ currentValue object metaStashEqual: defaultValue object
+]
+
 { #category : 'comparing' }
 MetaStashDescriptionElement >> hash [
 
@@ -78,7 +97,7 @@ MetaStashDescriptionElement >> includeSetter: aSymbol [
 { #category : 'as yet unclassified' }
 MetaStashDescriptionElement >> inspectionDescription [
 
-	<inspectorPresentationOrder: 0 title: 'MetaStash'>
+	"<inspectorPresentationOrder: 0 title: 'MetaStash'>"
 	<script:
 	'(MetaStashMockObject new asMetaStashElementForModel: #Testing) inspect'>
 	^ SpTablePresenter new
@@ -86,7 +105,8 @@ MetaStashDescriptionElement >> inspectionDescription [
 		  addColumn: (SpStringTableColumn title: 'Setter' evaluated: #set);
 		  addColumn: (SpStringTableColumn
 				   title: 'Value'
-				   evaluated: [ :each | (each getValueWithElement: self) object printString ]);
+				   evaluated: [ :each |
+					   (each getValueWithElement: self) object printString ]);
 		  items: self accessors;
 		  yourself
 ]

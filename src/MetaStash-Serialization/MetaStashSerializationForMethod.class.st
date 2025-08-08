@@ -39,13 +39,13 @@ MetaStashSerializationForMethod >> messagesString [
 			  '<t>' , each messageStringVariableFormat ])
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 MetaStashSerializationForMethod >> name [
 
 	^ name
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 MetaStashSerializationForMethod >> name: anObject [
 
 	name := anObject
@@ -82,7 +82,7 @@ MetaStashSerializationForMethod >> returnString [
 	^ '<t>^ ' , self returnReceiver variableName
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 MetaStashSerializationForMethod >> sourceCode [
 
 	self returnReceiver ifNil: [ ^ self name asString ].
@@ -95,6 +95,21 @@ MetaStashSerializationForMethod >> sourceCode [
 		  with: self variablesAndConstructorsString
 		  with: self messagesString
 		  with: self returnString) expandMacros
+]
+
+{ #category : 'as yet unclassified' }
+MetaStashSerializationForMethod >> sourceCodeForBlock [
+
+	self returnReceiver ifNil: [ ^ self name asString ].
+	self messages ifEmpty: [
+		^ '[ <2s> ]'
+			  expandMacrosWith: self name asString
+			  with: self returnReceiver constructorString ].
+	^ ('[ <2s><r><3s><r><4s> ]'
+		   expandMacrosWith: self name asString
+		   with: self variablesAndConstructorsString
+		   with: self messagesString
+		   with: self returnString) expandMacros
 ]
 
 { #category : 'as yet unclassified' }

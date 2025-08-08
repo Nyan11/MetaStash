@@ -40,6 +40,14 @@ MetaStashDescriptionRelation >> from: anObject [
 	from := anObject
 ]
 
+{ #category : 'testing' }
+MetaStashDescriptionRelation >> isDefaultValue [
+
+	self accessor hasDefaultValue ifFalse: [ ^ false ].
+	self accessor isOnlyGetter ifTrue: [ ^ false ].
+	^ self from defaultValueForRelation: self
+]
+
 { #category : 'accessing' }
 MetaStashDescriptionRelation >> to [
 

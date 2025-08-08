@@ -1,6 +1,6 @@
 Class {
 	#name : 'MetaStashDescriptionAccessor',
-	#superclass : 'Object',
+	#superclass : 'MetaStashDescriptionAbstractAccessor',
 	#instVars : [
 		'set',
 		'get'
@@ -22,12 +22,6 @@ MetaStashDescriptionAccessor class >> get: aGetter set: aSetter [
 		  get: aGetter;
 		  set: aSetter;
 		  yourself
-]
-
-{ #category : 'visiting' }
-MetaStashDescriptionAccessor >> acceptMetaStashVisitor: aMetaStashVisitor [
-
-	aMetaStashVisitor visitMetaStashAccessor: self
 ]
 
 { #category : 'accessing' }

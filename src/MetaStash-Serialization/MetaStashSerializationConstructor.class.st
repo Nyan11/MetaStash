@@ -29,7 +29,7 @@ MetaStashSerializationConstructor >> constructorStringFor: aMetaStashSerializati
 	macroMessage := '<1s> (<2s>);'.
 	messageStrings := aCollection collect: [ :each |
 		                  Character space join:
-			                  (each message separateKeywords substrings
+			                  (each message set separateKeywords substrings
 				                   collectWithIndex: [ :word :index |
 					                   | argumentString |
 					                   argumentString := aMetaStashSerialization

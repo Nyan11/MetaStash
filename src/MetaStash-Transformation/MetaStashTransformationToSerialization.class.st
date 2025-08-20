@@ -49,7 +49,7 @@ MetaStashTransformationToSerialization >> transformation: aModel [
 				            toObject increaseOccurencesInMessage ].
 			            MetaStashSerializationMessage new
 				            receiver: fromObject;
-				            message: each accessor set;
+				            message: each accessor;
 				            arguments: { toObject } ].
 	result messages addAll: messages.
 	^ result
